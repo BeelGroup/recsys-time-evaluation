@@ -6,8 +6,11 @@ Created on Thu Jun 17 17:17:14 2021
 """
 import pandas as pd
 
-def get_grid(name):
-    grids = pd.read_excel('Grids.xls')
+def get_grid(name, metric):
+    if metric == 'ndcg':
+        grids = pd.read_excel('Grids.xls')
+    elif metric == 'rmse':
+        grids = pd.read_excel('Grids_rmse.xls')
     grids = grids.set_index('Algo')
     
     grid = grids[name]
